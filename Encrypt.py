@@ -10,15 +10,15 @@ def PDF_encryption():
         output_file=open(out_file,"wb")
 
       
-        # Create reader and writer object
+        
         pdfReader = PyPDF2.PdfFileReader(input_file)
         pdfWriter = PyPDF2.PdfFileWriter()
-        # Add all pages to writer (accepted answer results into blank pages)
+       
         for pageNum in range(pdfReader.numPages):
             pdfWriter.addPage(pdfReader.getPage(pageNum))
-        # Encrypt with your password
+       
         pdfWriter.encrypt(password)
-        # Write it to an output file. (you can delete unencrypted version now)
+       
         resultPdf = open(out_file, 'wb')
         pdfWriter.write(resultPdf)
         resultPdf.close()
@@ -33,20 +33,20 @@ def PDF_encryption():
          error_msgs = []
          if Path(src_file).suffix.upper() != ".PDF":
             errors = True
-            error_msgs.append("Please select a PDF input file")
+            error_msgs.append("Select a PDF input file")
             
          if not(Path(dest_dir)).exists():
             errors = True
-            error_msgs.append("Please Select a valid output directory")
+            error_msgs.append("Select a valid output directory")
 
-        # Check for a file name
+     
          if len(out_file) < 1:
             errors = True
-            error_msgs.append("Please enter a file name")
+            error_msgs.append("Enter a file name")
             
          if len(password) < 1:
             errors = True
-            error_msgs.append("Please enter the password")
+            error_msgs.append("Enter the password")
         
          return(errors, error_msgs)  
 
@@ -72,7 +72,7 @@ def PDF_encryption():
     app.setTtkTheme('alt')
     app.setSize(500, 200)
 
-    # Add the interactive components
+  
     app.addLabel("Choose Source PDF File to Encrypt")
     app.addFileEntry("Input_File")
 

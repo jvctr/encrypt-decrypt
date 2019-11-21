@@ -1,8 +1,3 @@
-# Decrypt password-protected PDF in Python.
-# 
-# Requirements:
-# pip install PyPDF2
-
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from appJar import gui
 from pathlib import Path
@@ -24,10 +19,6 @@ def PDF_decryption():
       writer.write(output_file)
       if(app.questionBox("File Save", "Output PDF saved. Do you want to quit?")):
           app.stop()
-  ##if __name__ == '__main__':
-  ##  # example usage:
-  ##  decrypt_pdf(r'C:\Users\Giridhar\Desktop\Python FCUK\Encrypted.pdf', 'decrypted.pdf', 'password')
-  ##
 
 
   def validate_inputs(src_file, dest_dir,password, out_file):
@@ -42,7 +33,7 @@ def PDF_decryption():
           errors = True
           error_msgs.append("Please Select a valid output directory")
 
-      # Check for a file name
+
        if len(out_file) < 1:
           errors = True
           error_msgs.append("Please enter a file name")
@@ -73,7 +64,7 @@ def PDF_decryption():
   app.setTtkTheme('alt')
   app.setSize(500, 200)
 
-  # Add the interactive components
+
   app.addLabel("Choose Source PDF File to Decrypt")
   app.addFileEntry("Input_File")
 
